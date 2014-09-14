@@ -63,10 +63,6 @@ Groups: subject, activityName
 
 List of work performed to clean up the data
 -------------------------------------------
-###Download data
-The data can be downloaded from "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-
-
 ###Load packages
 ```{r}
 library(data.table)
@@ -75,22 +71,15 @@ library(dplyr)
 ```
 
 
-###Read files
-Suppose the data has been unzipped into the folder "./UCI HAR Dataset/"
+###Load subject, activity and data files
+Suppose the data has been unzipped into the folder "./UCI HAR Dataset/".
 
 ####Load subject files 
 ```{r}
 dtSubjectTrain <- tbl_df(fread("./UCI HAR Dataset/train/subject_train.txt"))
 dtSubjectTest <- tbl_df(fread("./UCI HAR Dataset/test/subject_test.txt"))
-```
-####Load activity files 
-```{r}
 dtActivityTrain <- tbl_df(fread("./UCI HAR Dataset/train/Y_train.txt"))
 dtActivityTest <- tbl_df(fread("./UCI HAR Dataset/test/Y_test.txt"))
-```
-
-####Load data files 
-```{r}
 dtTrain <- tbl_df(read.table("./UCI HAR Dataset/train/X_train.txt"))
 dtTest  <- tbl_df(read.table("./UCI HAR Dataset/test/X_test.txt"))
 ```
