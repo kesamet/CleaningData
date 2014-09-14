@@ -73,8 +73,6 @@ library(dplyr)
 
 ###Load subject, activity and data files
 Suppose the data has been unzipped into the folder "./UCI HAR Dataset/".
-
-####Load subject files 
 ```{r}
 dtSubjectTrain <- tbl_df(fread("./UCI HAR Dataset/train/subject_train.txt"))
 dtSubjectTest <- tbl_df(fread("./UCI HAR Dataset/test/subject_test.txt"))
