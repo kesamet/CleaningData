@@ -1,22 +1,21 @@
 Codebook
 ========
 
-This codebook describes the variables, the data, and any transformations or work performed to clean up the data
+This codebook describes the variables and data structure of the tidy data, and the work performed to clean up the data.
 
 
 Variables
 ---------
 
-Variable name     | Description
+Variable          | Description
 ------------------|------------
-subject           | Subject ID who performed the activity for each window sample. Its range is from 1 to 30.
+subject           | Subject ID
 activityName      | Activity name
 featureName       | Variable name
-average           | Average of each variable for each activity and each subject
+average           | Average of each feature for each activity and each subject
 
-Dataset structure
------------------
-
+Data structure
+--------------
 ```{r}
 Classes ‘grouped_df’, ‘tbl_df’, ‘tbl’ and 'data.frame':	11880 obs. of  4 variables:
  $ subject     : int  1 1 1 1 1 1 1 1 1 1 ...
@@ -48,22 +47,10 @@ Groups: subject, activityName
 ..     ...          ...                  ...         ...
 ```
 
-###Summary of variables
-```{r}
-    subject     activityName                  featureName       average        
- Min.   : 1.0   Length:11880       tBodyAcc-mean()-X:  180   Min.   :-0.99767  
- 1st Qu.: 8.0   Class :character   tBodyAcc-mean()-Y:  180   1st Qu.:-0.96205  
- Median :15.5   Mode  :character   tBodyAcc-mean()-Z:  180   Median :-0.46989  
- Mean   :15.5                      tBodyAcc-std()-X :  180   Mean   :-0.48436  
- 3rd Qu.:23.0                      tBodyAcc-std()-Y :  180   3rd Qu.:-0.07836  
- Max.   :30.0                      tBodyAcc-std()-Z :  180   Max.   : 0.97451  
-                                   (Other)          :10800      
-```
-
 
 List of work performed to clean up the data
 -------------------------------------------
-###Load packages
+###Load relevant packages
 ```{r}
 library(data.table)
 library(reshape2)
@@ -72,7 +59,7 @@ library(dplyr)
 
 
 ###Load subject, activity and data files
-Suppose the data has been unzipped into the folder "./UCI HAR Dataset/".
+Suppose that the data has been unzipped into the folder "./UCI HAR Dataset/".
 ```{r}
 dtSubjectTrain <- tbl_df(fread("./UCI HAR Dataset/train/subject_train.txt"))
 dtSubjectTest <- tbl_df(fread("./UCI HAR Dataset/test/subject_test.txt"))
@@ -124,7 +111,7 @@ dt2 <- select(dt2, -activityCode)
 dt3 <- melt(dt2, id.vars=c("subject", "activityName"), variable.name="featureName")
 ```
 
-###Create a tidy data set ith the average of each variable for each activity and each subject
+###Create a tidy data set with the average of each variable for each activity and each subject
 ```{r}
 dtFinal <-
   dt3 %>%

@@ -15,7 +15,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 run_analysis
 ------------
-The R script "run_analysis.r" loads the data and creates a tidy data set. It does the following:
+The R script "run_analysis.R" loads the data and creates a tidy data set. It does the following:
 
 1. Merges the training and the test sets to create one data set.
 
@@ -31,4 +31,4 @@ The R script "run_analysis.r" loads the data and creates a tidy data set. It doe
 
 Codebook
 --------
-The codebook describes the variables, the data, and any transformations or work performed to clean up the data.
+This codebook describes the variables and data structure of the tidy data, and the work performed to clean up the data.
